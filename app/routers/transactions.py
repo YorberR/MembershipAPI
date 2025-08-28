@@ -1,6 +1,6 @@
 from db import SessionDep
 from sqlalchemy import select
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Query
 from app.models.models import Customer, Transaction, TransactionCreate
 
 router = APIRouter(tags = ['transactions'])
@@ -18,7 +18,8 @@ async def create_transaction(transaction_data: TransactionCreate, session: Sessi
     return transaction_db
 
 @router.get("/transactions")
-async def list_transactions(session: SessionDep):
-    query = select(Transaction)
+async def list_transactions(session: SessionDep, skip: int = Query
+                            (0, description="Number of records to skip"), limit: int = Query(10, description="Number of records to return")):
+    query = select(Transaction).offset(skip).limit(limit)
     transaction = session.exec(query).all()
     return transaction
