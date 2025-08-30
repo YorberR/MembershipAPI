@@ -1,7 +1,7 @@
 from sqlmodel import Session
 
-from db import engine
-from app.models.models import Customer, Transaction
+from app.db.db import engine
+from app.models import Customer, Transaction
 
 session = Session(engine)
 customer = Customer(

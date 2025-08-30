@@ -1,7 +1,7 @@
-from db import SessionDep
+from app.db.db import SessionDep
 from sqlalchemy import select
 from fastapi import APIRouter, HTTPException, status, Query
-from app.models.models import Customer, Transaction, TransactionCreate
+from app.models import Customer, Transaction, TransactionCreate
 
 router = APIRouter(tags = ['transactions'])
 

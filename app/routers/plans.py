@@ -1,6 +1,6 @@
-from db import SessionDep
+from app.db.db import SessionDep
 from sqlmodel import select
-from app.models.models import Plan
+from app.models import Plan
 from fastapi import APIRouter, Depends, status, HTTPException, Response
 
 router = APIRouter(tags = ['plans'])

@@ -2,8 +2,8 @@ import time
 import zoneinfo
 from datetime import datetime
 from fastapi import FastAPI, Request, Depends, status, HTTPException
-from app.models.models import Invoice
-from db import create_all_tables
+from app.models import Invoice
+from app.db.db import create_all_tables
 from .routers import customers, transactions, plans
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
 from typing import Annotated

@@ -1,7 +1,7 @@
-from db import SessionDep
+from app.db.db import SessionDep
 from sqlmodel import select
 from fastapi import APIRouter, status, HTTPException, Query
-from app.models.models import Customer, CustomerCreate, CustomerUpdate, Plan, CustomerPlan, StatusEnum
+from app.models import Customer, CustomerCreate, CustomerUpdate, Plan, CustomerPlan, StatusEnum
 from sqlalchemy.exc import IntegrityError
 
 router = APIRouter(tags = ['customers'])
