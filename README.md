@@ -4,7 +4,7 @@ A professional FastAPI REST API for membership management. Built as a portfolio 
 
 ## 🚀 Live Demo
 
-[**View Live API Documentation →**](https://membershipapi.onrender.com/docs)
+[**View Live API Documentation →**](https://membershipapi-ymy1.onrender.com/docs)
 
 ## ✨ Features
 
