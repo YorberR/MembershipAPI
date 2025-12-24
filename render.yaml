@@ -9,6 +9,18 @@ services:
         generateValue: true
       - key: DEBUG
         value: "False"
+      - key: DATABASE_URL
+        value: "sqlite:///./data.db"
+      - key: APP_NAME
+        value: "MembershipAPI"
+      - key: APP_VERSION
+        value: "1.0.0"
+      - key: API_V1_PREFIX
+        value: "/api/v1"
+      - key: CORS_ORIGINS
+        value: "*"
+      - key: LOG_LEVEL
+        value: "INFO"
       - key: BASIC_AUTH_USERNAME
         sync: false
       - key: BASIC_AUTH_PASSWORD
