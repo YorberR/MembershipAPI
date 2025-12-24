@@ -21,7 +21,7 @@ A professional FastAPI REST API for membership management. Built as a portfolio 
 - **SQLModel** - SQL database with Python type hints
 - **Pydantic** - Data validation
 - **Uvicorn** - ASGI server
-- **SQLite** - Lightweight database (PostgreSQL compatible)
+- **SQLite** - Lightweight embedded database
 
 ## 📁 Project Structure
 

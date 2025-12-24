@@ -23,7 +23,7 @@ if is_sqlite:
         connect_args={"check_same_thread": False}
     )
 else:
-    # PostgreSQL settings
+    # Other databases (PostgreSQL, MySQL, etc.)
     engine = create_engine(
         settings.database_url,
         echo=settings.debug,
