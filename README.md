@@ -1,113 +1,114 @@
-# MembershipAPI
+# ⚡ MMembershipAPI: Scalable SaaS Backend
 
-A professional FastAPI REST API for membership management. Built as a portfolio project to demonstrate modern Python backend development practices.
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![SQLModel](https://img.shields.io/badge/SQLModel-Type_Safe-52B0E7?style=for-the-badge)
+![Pydantic](https://img.shields.io/badge/Pydantic-Validation-E92063?style=for-the-badge)
 
-## 🚀 Live Demo
+A professional, type-safe REST API for membership management. Built as a portfolio project to demonstrate **modern Python backend development practices**, leveraging the speed of FastAPI and the reliability of Pydantic.
 
-[**View Live API Documentation →**](https://membershipapi-ymy1.onrender.com/docs)
+### 🚀 [View Live API Documentation (Swagger UI)](https://membershipapi-ymy1.onrender.com/docs)
 
-## ✨ Features
 
-- **RESTful API** with full CRUD operations
-- **SQLModel ORM** for type-safe database operations
-- **Auto-generated documentation** (Swagger UI & ReDoc)
-- **HTTP Basic Authentication**
-- **Professional architecture** with services, models, and routers
-- **Demo data** auto-generated on startup
+## ✨ Key Features
+
+* **High Performance:** Built on Starlette and Pydantic, making it one of the fastest Python frameworks available.
+* **Type Safety:** Uses **SQLModel** (combining SQLAlchemy + Pydantic) to ensure data consistency from the database to the API response.
+* **Architecture:** Implements a "Service Pattern" to separate business logic from route handlers.
+* **Auto-Documentation:** Interactive Swagger UI & ReDoc generated automatically from the code.
+* **Security:** HTTP Basic Authentication implementation.
+
 
 ## 🛠️ Tech Stack
 
-- **FastAPI** - Modern, fast web framework
-- **SQLModel** - SQL database with Python type hints
-- **Pydantic** - Data validation
-- **Uvicorn** - ASGI server
-- **SQLite** - Lightweight embedded database
+* **Framework:** FastAPI
+* **ORM:** SQLModel (SQLAlchemy wrapper)
+* **Validation:** Pydantic
+* **Server:** Uvicorn (ASGI)
+* **Database:** SQLite (Embedded for Demo) / Compatible with PostgreSQL
 
-## 📁 Project Structure
 
+## 📁 Project Architecture
+
+The project follows a modular structure to ensure scalability and maintainability:
+
+```text
+├── app
+│   ├── api/           # Dependencies & Error handling
+│   ├── core/          # Config & Logging (Environment vars)
+│   ├── db/            # Database connection & Seeding
+│   ├── models/        # SQLModel definitions (DB Schemas)
+│   ├── routers/       # Endpoints (Controller layer)
+│   ├── services/      # Business Logic (Service layer)
+│   └── main.py        # App Entry Point
 ```
-├── app/
-│   ├── api/            # Dependencies, exceptions, responses
-│   ├── core/           # Configuration and logging
-│   ├── db/             # Database connection and seeding
-│   ├── models/         # SQLModel data models
-│   ├── routers/        # API route handlers
-│   ├── services/       # Business logic layer
-│   └── main.py         # FastAPI application
-├── render.yaml         # Render deployment config
-├── requirements.txt    # Python dependencies
-└── README.md
-```
-
 ## 🏃 Quick Start
+To run this project locally:
 
+1. **Clone the repository:**
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/membershipapi.git
-cd membershipapi
-
-# Create virtual environment
+git clone [https://github.com/YorberR/MembershipAPI.git](https://github.com/YorberR/MembershipAPI.git)
+cd MembershipAPI
+```
+2. **Create virtual environment:**
+```bash
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or: venv\Scripts\activate  # Windows
-
-# Install dependencies
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+```
+3. **Install dependencies:**
+```bash
 pip install -r requirements.txt
-
-# Run the application
+```
+4. **Run the application:**
+```bash
 uvicorn app.main:app --reload
 ```
+5. **Explore:** Visit http://localhost:8000/docs to see the interactive documentation.
 
-Visit `http://localhost:8000/docs` for the interactive API documentation.
+---
 
 ## 📚 API Endpoints
+The API provides full CRUD operations for the following resources:
 
-### Public
+🔐 **Authentication**
+
+- **Standard HTTP Basic Auth** is required for write operations.
+
+- **Demo Credentials:**
+
+    - Username: admin
+
+    - Password: secret
+
+**👥 Customers**
+
 | Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/health` | Health check |
-| GET | `/time/{iso_code}` | Get time by country code |
+| --- | --- | --- |
+| POST | `/api/v1/customers` | Register a new customer |
+| GET | `/api/v1/customers` | List all customers |
+| PATCH | `/api/v1/customers/{id}` | Update details |
+| DELETE | `/api/v1/customers/{id}` | Remove customer |
 
-### Customers (Authenticated)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/customers` | Create customer |
-| GET | `/api/v1/customers` | List customers |
-| GET | `/api/v1/customers/{id}` | Get customer |
-| PATCH | `/api/v1/customers/{id}` | Update customer |
-| DELETE | `/api/v1/customers/{id}` | Delete customer |
+**💳 Plans & Transactions**
 
-### Plans (Authenticated)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/plans` | Create plan |
-| GET | `/api/v1/plans` | List plans |
-| GET | `/api/v1/plans/{id}` | Get plan |
-| PATCH | `/api/v1/plans/{id}` | Update plan |
-| DELETE | `/api/v1/plans/{id}` | Delete plan |
+- **Plans:** Manage subscription tiers (Gold, Silver, etc).
 
-### Transactions (Authenticated)
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/v1/transactions` | Create transaction |
-| GET | `/api/v1/transactions` | List transactions |
-| GET | `/api/v1/transactions/{id}` | Get transaction |
-| PATCH | `/api/v1/transactions/{id}` | Update transaction |
-| DELETE | `/api/v1/transactions/{id}` | Delete transaction |
+- **Transactions:** Record payments and subscription events.
 
-## 🔐 Authentication
+(Full list available in the Swagger UI)
 
-HTTP Basic Authentication:
-- **Username**: `admin`
-- **Password**: `secret`
 
-## 🚀 Deploy to Render
+## 🚀 Deployment
+This application is deployed on **Render** using a native Python environment.
 
-1. Push your code to GitHub
-2. Go to [render.com](https://render.com) → New → Blueprint
-3. Select your repository
-4. Render will auto-detect `render.yaml` and deploy
+- **Configuration:** render.yaml handles the build and start commands automatically.
+
+- **Data:** The application auto-seeds demo data on startup if the database is empty.
 
 ## 📄 License
 
-MIT License
+This project is released under [MIT License](https://github.com/YorberR/MembershipAPI/blob/main/LICENSE)
+
